@@ -1,0 +1,3 @@
+verilog work "v74x139_dataflow.v"
+verilog work "v74x139_behavior.v"
+verilog work "v74x139.v"
