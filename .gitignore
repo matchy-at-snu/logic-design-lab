@@ -61,8 +61,42 @@ webtalk_pn.xml
 
 # generated folders
 iseconfig/
+isim
+ipcore_dir
 xlnx_auto_0_xdb/
 xst/
 _ngo/
 _xmsgs/
-© 2022 GitHub, Inc.
+
+# isim files
+*.log
+*.svf
+*.scr
+*.cmd
+*.bak
+*.elf
+*.ace
+*~
+*#
+*.swp
+*.ini
+*.html
+*.vhi
+*.wdb
+*.xmsgs
+*.xreport
+*.exe
+*_beh.prj
+db
+incremental_db
+work
+*.cr.mti
+vsim.wlf
+transcript
+pepExtractor.prj
+
+# IDE config
+.vscode
+.idea
+
+# © 2022 GitHub, Inc.
