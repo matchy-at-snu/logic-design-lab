@@ -1,1 +1,0 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "/home/ise/_ise_projects/v74x139/test_full_isim_beh.exe" -prj "/home/ise/_ise_projects/v74x139/test_full_beh.prj" "test_full" "work.glbl" 
