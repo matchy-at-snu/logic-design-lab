@@ -29,7 +29,7 @@ module v74x139(
     output [3:0] Y2
     );
 	 
-	v74x139_dataflow T1(.G_L(G1), .A(A1), .B(B1), .Y_L(Y1));
+	v74x139_structural T1(.G_L(G1), .A(A1), .B(B1), .Y_L(Y1));
 	v74x139_behavior T2(.G_L(G2), .A(A2), .B(B2), .Y_L(Y2));
 
 endmodule

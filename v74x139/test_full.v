@@ -58,7 +58,7 @@ module test_full;
             B2 = (i >> 2) & 1;
             A1 = (i >> 1) & 1;
             A2 = i & 1;
-            #100;
+            #10;
         end
 	end
 

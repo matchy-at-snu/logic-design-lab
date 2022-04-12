@@ -3,9 +3,9 @@
 // Company:
 // Engineer:
 //
-// Create Date:    09:57:14 04/05/2022
+// Create Date:    04:29:23 04/12/2022
 // Design Name:
-// Module Name:    v74x139_dataflow
+// Module Name:    v74x139_structural
 // Project Name:
 // Target Devices:
 // Tool versions:
@@ -18,23 +18,22 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
-module v74x139_dataflow(
+module v74x139_structural(
 	input G_L,
 	input A,
 	input B,
-	output [3:0] Y_L
+	input [3:0] Y_L
 	);
 
-	 wire [1:0] sel;
-	 wire [3:0] out;
+	wire N_A, N_B, N_G;
 
-	 assign sel = {B, A};
-	 assign Y_L = ~out;
+	not T1(N_G, G_L);
+	not T2(N_A, A);
+	not T3(N_B, B);
 
-	 assign out = (sel == 2'b00 && G_L == 1'b0) ? 4'b0001 :
-					  (sel == 2'b01 && G_L == 1'b0) ? 4'b0010 :
-					  (sel == 2'b10 && G_L == 1'b0) ? 4'b0100 :
-					  (sel == 2'b11 && G_L == 1'b0) ? 4'b1000 :
-					  4'b0000;
+	nand T4(Y_L[0], N_G, N_A, N_B);
+	nand T5(Y_L[1], N_G, A, N_B);
+	nand T6(Y_L[2], N_G, N_A, B);
+	nand T7(Y_L[3], N_G, A, B);
 
 endmodule
