@@ -18,12 +18,12 @@
 // Additional Comments:
 //
 //////////////////////////////////////////////////////////////////////////////////
-module mux_4_to_1(
-\tinput [3:0] I,
-\tinput A,
-\tinput B,
-\toutput Y
-\t);
+module mux_4_to_1_behavior(
+	 input [3:0] I,
+	 input A,
+	 input B,
+	 output Y
+	);
 
 	 wire [1:0] sel;
 	 reg out;
@@ -38,6 +38,5 @@ module mux_4_to_1(
 			2'b11: out = I[3];
 		endcase
 	end
-
 
 endmodule

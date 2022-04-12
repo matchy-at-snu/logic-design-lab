@@ -12,7 +12,7 @@
 // Tool versions:
 // Description:
 //
-// Verilog Test Fixture created by ISE for module: mux_4_to_1
+// Verilog Test Fixture created by ISE for module: mux_4_to_1_behavior
 //
 // Dependencies:
 //
@@ -22,7 +22,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-module test_mux;
+module test_mux_behavior;
 
 	// Inputs
 	reg [3:0] I;
@@ -35,7 +35,7 @@ module test_mux;
 	integer i;
 
 	// Instantiate the Unit Under Test (UUT)
-	mux_4_to_1 uut (
+	mux_4_to_1_behavior uut (
 		.I(I),
 		.A(A),
 		.B(B),
