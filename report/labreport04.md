@@ -167,7 +167,7 @@ endmodule
 
 ![kmap_a-d](C:\Users\Match\Documents\matchyThings\_ise_projects\report\img\lab04\kmap_a-d.png)
 
-![kmap_e-g](C:\Users\Match\Documents\matchyThings\_ise_projects\report\img\lab04\kmap_e-g.png)
+![kmap_e-g](C:\Users\Match\Documents\matchyThings\_ise_projects\report\img\lab04\kmap_e-g.jpg)
 
 Simplified sum of minterms:
 
@@ -175,7 +175,7 @@ Simplified sum of minterms:
 * b = IN3 + IN2IN0' + IN1'IN0'
 * c = IN3 + IN2'IN1'IN0' + IN2IN0
 * d = IN3'IN2'IN1'IN0' + IN2IN1'IN0 + IN2'IN1IN0
-* e = IN3'IN2'IN1'IN0' + IN3 + IN2IN1'IN0 + IN2IN1'IN0' 
+* e = IN2'IN1'IN0' + IN3 + IN2IN1'IN0 + IN2IN1'IN0 
 * f = IN3 + IN1'IN0' + IN2IN1IN0
 * g = IN2  + IN1 + IN3IN0'
 
