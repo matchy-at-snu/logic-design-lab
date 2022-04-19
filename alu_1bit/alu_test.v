@@ -42,6 +42,14 @@ module alu_test;
 		.Output(Output)
 	);
 
+	wire Abuf = A;
+	wire Acomp = ~A;
+	wire AxorB = A^B;
+	wire AxnorB = ~(A^B);
+
+	wire AplusB = A+B;
+	wire AcompplustB = (~A)+B;
+
 	integer i;
 
 	initial begin

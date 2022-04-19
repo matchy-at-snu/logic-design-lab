@@ -45,8 +45,8 @@ always @(sel or A or B or Mode) begin
 		case (sel)
 			2'b00: out = A;
 			2'b01: out = ~A;
-			2'b10: out = A^B;
-			2'b11: out = (~A)^B;
+			2'b10: out = A + B;
+			2'b11: out = (~A) + B;
 		endcase
 	end
 end
