@@ -23,7 +23,7 @@ module bcd_to_7_dataflow(
     output [6:0] SEG
     );
 
-    assign SEG = (NUM == 4'b0000) ? 7'b1111110 : // 0
+    assign SEG = (NUM == 4'b0000) ? 7'b1111110 :
 				 (NUM == 4'b0001) ? 7'b0110000 :
 				 (NUM == 4'b0010) ? 7'b1101101 :
 				 (NUM == 4'b0011) ? 7'b1111001 :
