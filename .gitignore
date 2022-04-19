@@ -42,6 +42,9 @@
 *_usage.xml
 *_xst.xrpt
 
+# Schematic log files
+*.schlog
+
 # iMPACT generated files
 _impactbatch.log
 impact.xsl
