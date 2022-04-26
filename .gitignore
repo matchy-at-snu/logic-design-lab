@@ -42,6 +42,11 @@
 *_usage.xml
 *_xst.xrpt
 
+# planAhead files
+*.tcl
+*.debug
+*/planAhead_run_*
+
 # Schematic log files
 *.schlog
 
