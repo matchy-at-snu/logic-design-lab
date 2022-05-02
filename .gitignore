@@ -50,6 +50,7 @@
 
 # Schematic log files
 *.schlog
+sch2HdlBatchFile
 
 # iMPACT generated files
 _impactbatch.log
