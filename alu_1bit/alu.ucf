@@ -1,0 +1,9 @@
+
+# PlanAhead Generated physical constraints 
+
+NET "Mode" LOC = P30;
+NET "Select[1]" LOC = P31;
+NET "Select[0]" LOC = P32;
+NET "A" LOC = P33;
+NET "B" LOC = P41;
+NET "Output" LOC = P93;

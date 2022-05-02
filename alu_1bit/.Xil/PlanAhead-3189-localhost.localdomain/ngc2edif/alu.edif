@@ -1,0 +1,197 @@
+(edif alu
+  (edifVersion 2 0 0)
+  (edifLevel 0)
+  (keywordMap (keywordLevel 0))
+  (status
+    (written
+      (timestamp 2022 5 2 7 19 42)
+      (program "Xilinx ngc2edif" (version "P.20131013"))
+      (author "Xilinx. Inc ")
+      (comment "This EDIF netlist is to be used within supported synthesis tools")
+      (comment "for determining resource/timing estimates of the design component")
+      (comment "represented by this netlist.")
+      (comment "Command line: -mdp2sp -w -secure alu.ngc alu.edif ")))
+  (external UNISIMS
+    (edifLevel 0)
+    (technology (numberDefinition))
+    (cell LUT4
+      (cellType GENERIC)
+        (view view_1
+          (viewType NETLIST)
+          (interface
+            (port I0
+              (direction INPUT)
+            )
+            (port I1
+              (direction INPUT)
+            )
+            (port I2
+              (direction INPUT)
+            )
+            (port I3
+              (direction INPUT)
+            )
+            (port O
+              (direction OUTPUT)
+            )
+          )
+      )
+    )
+    (cell IBUF
+      (cellType GENERIC)
+        (view view_1
+          (viewType NETLIST)
+          (interface
+            (port I
+              (direction INPUT)
+            )
+            (port O
+              (direction OUTPUT)
+            )
+          )
+      )
+    )
+    (cell OBUF
+      (cellType GENERIC)
+        (view view_1
+          (viewType NETLIST)
+          (interface
+            (port I
+              (direction INPUT)
+            )
+            (port O
+              (direction OUTPUT)
+            )
+          )
+      )
+    )
+  )
+
+  (library alu_lib
+    (edifLevel 0)
+    (technology (numberDefinition))
+    (cell alu
+      (cellType GENERIC)
+        (view view_1
+          (viewType NETLIST)
+          (interface
+            (port Mode
+              (direction INPUT)
+            )
+            (port A
+              (direction INPUT)
+            )
+            (port B
+              (direction INPUT)
+            )
+            (port Output
+              (direction OUTPUT)
+            )
+            (port (array (rename Select "Select<1:0>") 2)
+              (direction INPUT))
+            (designator "xc3s50an-4-tqg144")
+            (property TYPE (string "alu") (owner "Xilinx"))
+            (property BUS_INFO (string "2:INPUT:Select<1:0>") (owner "Xilinx"))
+            (property NLW_UNIQUE_ID (integer 0) (owner "Xilinx"))
+            (property NLW_MACRO_TAG (integer 0) (owner "Xilinx"))
+            (property NLW_MACRO_ALIAS (string "alu_alu") (owner "Xilinx"))
+          )
+          (contents
+            (instance Output1
+              (viewRef view_1 (cellRef LUT4 (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+              (property INIT (string "8778") (owner "Xilinx"))
+            )
+            (instance (rename A_IBUF_renamed_0 "A_IBUF")
+              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+            )
+            (instance (rename B_IBUF_renamed_1 "B_IBUF")
+              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+            )
+            (instance (rename Select_1_IBUF_renamed_2 "Select_1_IBUF")
+              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+            )
+            (instance (rename Select_0_IBUF_renamed_3 "Select_0_IBUF")
+              (viewRef view_1 (cellRef IBUF (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+            )
+            (instance (rename Output_OBUF_renamed_4 "Output_OBUF")
+              (viewRef view_1 (cellRef OBUF (libraryRef UNISIMS)))
+              (property XSTLIB (boolean (true)) (owner "Xilinx"))
+            )
+            (net A
+              (joined
+                (portRef A)
+                (portRef I (instanceRef A_IBUF_renamed_0))
+              )
+            )
+            (net A_IBUF
+              (joined
+                (portRef I3 (instanceRef Output1))
+                (portRef O (instanceRef A_IBUF_renamed_0))
+              )
+            )
+            (net B
+              (joined
+                (portRef B)
+                (portRef I (instanceRef B_IBUF_renamed_1))
+              )
+            )
+            (net B_IBUF
+              (joined
+                (portRef I1 (instanceRef Output1))
+                (portRef O (instanceRef B_IBUF_renamed_1))
+              )
+            )
+            (net Output
+              (joined
+                (portRef Output)
+                (portRef O (instanceRef Output_OBUF_renamed_4))
+              )
+            )
+            (net Output_OBUF
+              (joined
+                (portRef O (instanceRef Output1))
+                (portRef I (instanceRef Output_OBUF_renamed_4))
+              )
+            )
+            (net (rename Select_0_ "Select<0>")
+              (joined
+                (portRef (member Select 1))
+                (portRef I (instanceRef Select_0_IBUF_renamed_3))
+              )
+            )
+            (net (rename Select_1_ "Select<1>")
+              (joined
+                (portRef (member Select 0))
+                (portRef I (instanceRef Select_1_IBUF_renamed_2))
+              )
+            )
+            (net Select_0_IBUF
+              (joined
+                (portRef I2 (instanceRef Output1))
+                (portRef O (instanceRef Select_0_IBUF_renamed_3))
+              )
+            )
+            (net Select_1_IBUF
+              (joined
+                (portRef I0 (instanceRef Output1))
+                (portRef O (instanceRef Select_1_IBUF_renamed_2))
+              )
+            )
+          )
+      )
+    )
+  )
+
+  (design alu
+    (cellRef alu
+      (libraryRef alu_lib)
+    )
+    (property PART (string "xc3s50an-4-tqg144") (owner "Xilinx"))
+  )
+)
+
