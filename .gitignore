@@ -43,6 +43,7 @@
 *_xst.xrpt
 
 # planAhead files
+.Xil
 *.tcl
 *.debug
 */planAhead_run_*
