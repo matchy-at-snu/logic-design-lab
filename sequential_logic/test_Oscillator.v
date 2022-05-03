@@ -37,7 +37,7 @@ module test_Oscillator();
     E = 0;
     
     // Wait 100 ns for global reset to finish
-    #100;
+    #200;
     
     // Add stimulus here
     
