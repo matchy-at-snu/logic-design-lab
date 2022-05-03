@@ -54,6 +54,13 @@ module test_counter_2digit;
     reset = 0;
     #1000;
 
+    reset = 1;
+    #100;
+
+
+    reset = 0;
+    #1000;
+
 	end
 
 endmodule
