@@ -23,22 +23,22 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module test_flipflop();
-  
+
   // Inputs
   reg R;
   reg S;
   reg E;
-  
+
   // Outputs
   wire Q;
   wire Q_L;
   wire Clk;
-  
+
   Oscillator Os(
   .E(E),
   .F(Clk)
   );
-  
+
   // Instantiate the Unit Under Test (UUT)
   RS_flipflop uut (
   .R(R),
@@ -47,44 +47,47 @@ module test_flipflop();
   .Q(Q),
   .Q_L(Q_L)
   );
-  
+
   initial begin
     // Initialize Inputs
     R = 0;
     S = 0;
     E = 0;
-    #100;
-    
+    #200;
+
     E = 1;
-	 
+
     // SET
     R = 0; S = 1;
-    #15;
-    
-	 // HOLD
-    R = 0; S = 0;
-    #5;
-    
-    // RESET
-    R = 1; S = 0;
-    #15;
-    
-	 // HOLD
-	 R = 0; S = 0;
-	 #30;
-	 
-	 // SET
-    R = 0; S = 1;
-    #5;
-    
+    #30;
+
 	 // HOLD
     R = 0; S = 0;
     #30;
-	 
-	 R = 1; S = 1;
-	 #10;
-    
+
+    // RESET
+    R = 1; S = 0;
+    #30;
+
+	 // HOLD
+	 R = 0; S = 0;
+	 #30;
+
+	 // SET
+    R = 0; S = 1;
+    #2;
+
+	 // HOLD
+    R = 0; S = 0;
+    #48;
+
+    // RESET
+    R = 1; S = 0;
+    #30;
+
+    // HOLD
+    R = 0; S = 0;
+    #30;
   end
-  
+
 endmodule
-  
