@@ -22,8 +22,8 @@ module RSlatch(input R,
                input S,
                output Q,
                output Q_L);
-  
-  nor (Q_L, S, Q);
-  nor (Q, R, Q_L);
-  
+
+  nor #5(Q_L, S, Q);
+  nor #5(Q, R, Q_L);
+
 endmodule

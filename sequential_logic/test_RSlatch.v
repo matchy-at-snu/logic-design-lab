@@ -23,15 +23,15 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 module test_RSlatch();
-  
+
   // Inputs
   reg R;
   reg S;
-  
+
   // Bidirs
   wire Q;
   wire Q_L;
-  
+
   // Instantiate the Unit Under Test (UUT)
   RSlatch uut (
   .R(R),
@@ -39,29 +39,52 @@ module test_RSlatch();
   .Q(Q),
   .Q_L(Q_L)
   );
-  
+
   initial begin
-    
+
     // RESET
     R = 1; S = 0;
     #100;
-    
+
     // HOLD
     R = 0; S = 0;
-    #100;
-    
+    #50;
+
     // SET
     R = 0; S = 1;
-    #100;
-    
+    #50;
+
     // INVALID
     R = 1; S = 1;
-    #100;
-    
+    #50;
+
+	 // RESET
+	 R = 1; S = 0;
+	 #50;
+
     // HOLD
     R = 0; S = 0;
-    #100;
-	 
+    #50;
+
+	 // SET
+	 R = 0; S = 1;
+	 #100;
+
+	 // INVALID
+	 R = 1; S = 1;
+	 #100;
+
+	 // HOLD
+	 R = 0; S = 0;
+	 #200;
+	 // Expecting race
+
+	 // RESET AND HOLD
+	 R = 1; S = 0;
+	 #100;
+	 R = 0; S = 0;
+	 #100;
+
   end
-  
+
 endmodule
