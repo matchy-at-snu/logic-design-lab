@@ -22,6 +22,6 @@ module Oscillator(input E,
                   output F);
   wire tmp;
   and #0(tmp, E, F);
-  not #10(F, tmp);
-  
+  not #20(F, tmp);
+
 endmodule
