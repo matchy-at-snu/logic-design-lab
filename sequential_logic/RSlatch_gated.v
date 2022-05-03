@@ -21,21 +21,16 @@
 module RSlatch_gated(input R,
                      input S,
                      input E,
-                     inout Q,
-                     inout Q_L);
-  
-  
+                     output Q,
+                     output Q_L);
+
+
   wire R_in;
   and(R_in, R, E);
-  
+
   wire S_in;
   and(S_in, S, E);
-  
-  RSlatch RS(
-  .R(R_in),
-  .S(S_in),
-  .Q(Q),
-  .Q_L(Q_L)
-  );
-  
+
+  RSlatch RS(.R(R_in),.S(S_in),.Q(Q),.Q_L(Q_L));
+
 endmodule
