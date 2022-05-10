@@ -25,7 +25,7 @@ module TDC_main(
     output [6:0] digit0
     );
 
-  reg clock_sec;
+  wire clock_sec;
 
   freq_divider fd(
     .clr(reset), .clk(clock), .clkout(clock_sec)
@@ -45,7 +45,7 @@ module TDC_main(
     .bcd(dig1), .seg(digit1)
   );
   bcd_to_7 show2(
-    .bcd(dig0), .seg(digit2)
+    .bcd(dig0), .seg(digit0)
   );
 
 
