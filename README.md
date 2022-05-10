@@ -1,5 +1,10 @@
 # logic-design-lab
 
+## Resources
+
+1. [Verilog Tutorial](https://www.chipverify.com/verilog/verilog-tutorial)
+2. [Icarus Verilog](http://iverilog.icarus.com/) and its [test suite](https://github.com/steveicarus/ivtest)
+
 ## Xilinx ISE Files Explanation
 
 ### File with Known Functions
