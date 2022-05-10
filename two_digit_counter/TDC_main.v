@@ -20,6 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module TDC_main(
     input clock,
+	 input stop,
     input reset,
     output [6:0] digit1,
     output [6:0] digit0
@@ -28,7 +29,7 @@ module TDC_main(
   wire clock_sec;
 
   freq_divider fd(
-    .clr(reset), .clk(clock), .clkout(clock_sec)
+    .clr(stop), .clk(clock), .clkout(clock_sec)
   );
 
   wire [3:0] dig1;
