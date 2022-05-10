@@ -32,19 +32,16 @@ module counter_2digit(
       dig0 <= 0;
     end
     else begin
-      always @(posedge clock)
-      begin
-        if (dig1 == 9 && dig0 == 9) begin
-          dig1 <= 0;
-          dig0 <= 0;
-        end
-        else if (dig0 == 9) begin
-          dig0 <= 0;
-          dig1 <= dig1 + 1;
-        end
-        else begin
-          dig0 <= dig0 + 1;
-        end
+      if (dig1 == 9 && dig0 == 9) begin
+        dig1 <= 0;
+        dig0 <= 0;
+      end
+      else if (dig0 == 9) begin
+        dig0 <= 0;
+        dig1 <= dig1 + 1;
+      end
+      else begin
+        dig0 <= dig0 + 1;
       end
     end
   end
