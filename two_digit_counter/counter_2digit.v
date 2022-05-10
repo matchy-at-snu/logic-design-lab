@@ -25,8 +25,7 @@ module counter_2digit(
     output reg [3:0] dig0
     );
 
-
-  always @(posedge clock)
+  always @(posedge clock or posedge reset)
   begin
     if (reset) begin
       dig1 <= 0;
@@ -46,4 +45,5 @@ module counter_2digit(
       end
     end
   end
+
 endmodule
