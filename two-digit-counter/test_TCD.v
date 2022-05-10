@@ -48,10 +48,11 @@ module test_TCD;
 		reset = 1;
 
 		// Wait 100 ns for global reset to finish
-		#500;
+		#1000;
         
 		// Add stimulus here
 		reset = 0;
+		#2000;
 
 	end
       
