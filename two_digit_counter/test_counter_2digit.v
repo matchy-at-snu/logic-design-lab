@@ -52,7 +52,7 @@ module test_counter_2digit;
 
 		// Add stimulus here
     reset = 0;
-    #1000;
+    #830;
 
     reset = 1;
     #100;
