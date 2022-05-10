@@ -1,19 +1,19 @@
 
-# PlanAhead Generated physical constraints 
+# PlanAhead Generated physical constraints
 
 NET "clock" LOC = P57;
 NET "reset" LOC = P47;
-NET "digit0[6]" LOC = P68;
-NET "digit0[5]" LOC = P69;
-NET "digit0[4]" LOC = P70;
+NET "digit0[6]" LOC = P76;
+NET "digit0[5]" LOC = P75;
+NET "digit0[4]" LOC = P72;
 NET "digit0[3]" LOC = P71;
-NET "digit0[2]" LOC = P72;
-NET "digit0[1]" LOC = P75;
-NET "digit0[0]" LOC = P76;
-NET "digit1[6]" LOC = P77;
-NET "digit1[5]" LOC = P78;
-NET "digit1[4]" LOC = P79;
+NET "digit0[2]" LOC = P70;
+NET "digit0[1]" LOC = P69;
+NET "digit0[0]" LOC = P68;
+NET "digit1[6]" LOC = P85;
+NET "digit1[5]" LOC = P84;
+NET "digit1[4]" LOC = P83;
 NET "digit1[3]" LOC = P82;
-NET "digit1[2]" LOC = P83;
-NET "digit1[1]" LOC = P84;
-NET "digit1[0]" LOC = P85;
+NET "digit1[2]" LOC = P79;
+NET "digit1[1]" LOC = P78;
+NET "digit1[0]" LOC = P77;
