@@ -21,26 +21,28 @@
 module counter_2digit(
     input reset,
     input clock,
-    output [3:0] dig1,
-    output [3:0] dig0
+    output reg [3:0] dig1,
+    output reg [3:0] dig0
     );
 
-  reg [7:0] out;
-
-  assign dig1 = out[7:4];
-  assign dig0 = out[3:0];
 
   always @(posedge clock)
   begin
     if (reset) begin
-      out <= 0;
+      dig1 <= 0;
+      dig0 <= 0;
     end
     else begin
-      if (out == 99) begin
-        out <= 0;
+      if (dig1 == 9 && dig0 == 9) begin
+        dig1 <= 0;
+        dig0 <= 0;
+      end
+      else if (dig0 == 9) begin
+        dig0 <= 0;
+        dig1 <= dig1 + 1;
       end
       else begin
-        out <= out + 1;
+        dig0 <= dig0 + 1;
       end
     end
   end
