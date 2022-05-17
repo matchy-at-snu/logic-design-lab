@@ -47,6 +47,8 @@
 *.tcl
 *.debug
 */planAhead_run_*
+*/*/planAhead_run_*
+*/*/*/planAhead_run_*
 
 # Schematic log files
 *.schlog
