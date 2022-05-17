@@ -23,7 +23,8 @@ module vm_moore(
     input D,
     input RESET,
     input CLK,
-    output [3:0] State, // for the ease of BCD conversion
+    output [3:0] BCD1, // for the ease of BCD conversion
+    output [3:0] BCD0,
     output O
     );
 
@@ -32,53 +33,63 @@ module vm_moore(
                   A_NICKEL  = 4'b0010, // 5$
                   A_DIME    = 4'b0100, // 10$
                   FIFTEEN   = 4'b1000; // 15$
-  reg [3:0] state = NO_MONEY;
-
-  wire State = state;
+  reg [3:0] state;
 
   always @(posedge CLK or posedge RESET) begin
-    case (state)
-      NO_MONEY: begin
-        if (RESET) begin
-          state <= NO_MONEY;
-        end else if (N) begin
-          state <= A_NICKEL;
-        end else if (D) begin
-          state <= A_DIME;
-        end else begin
-          state <= NO_MONEY;
+    if (RESET) begin
+      state = NO_MONEY;
+    end else begin
+      case (state)
+        NO_MONEY: begin
+          if (RESET) begin
+            state = NO_MONEY;
+          end else if (N) begin
+            state = A_NICKEL;
+          end else if (D) begin
+            state = A_DIME;
+          end else begin
+            state = NO_MONEY;
+          end
         end
-      end
-      A_NICKEL: begin
-        if (RESET) begin
-          state <= NO_MONEY;
-        end else if (N) begin
-          state <= A_DIME;
-        end else if (D) begin
-          state <= FIFTEEN;
-        end else begin
-          state <= A_NICKEL;
+        A_NICKEL: begin
+          if (RESET) begin
+            state = NO_MONEY;
+          end else if (N) begin
+            state = A_DIME;
+          end else if (D) begin
+            state = FIFTEEN;
+          end else begin
+            state = A_NICKEL;
+          end
         end
-      end
-      A_DIME: begin
-        if (RESET) begin
-          state <= NO_MONEY;
-        end else if (N || D) begin
-          state <= FIFTEEN;
-        end else begin
-          state <= A_DIME;
+        A_DIME: begin
+          if (RESET) begin
+            state = NO_MONEY;
+          end else if (N || D) begin
+            state = FIFTEEN;
+          end else begin
+            state = A_DIME;
+          end
         end
-      end
-      FIFTEEN: begin
-        if (RESET) begin
-          state <= NO_MONEY;
-        end else begin
-          state <= FIFTEEN;
+        FIFTEEN: begin
+          if (RESET) begin
+            state = NO_MONEY;
+          end else begin
+            state = FIFTEEN;
+          end
         end
-      end
-    endcase
+      endcase
+    end
   end
 
   assign O = (state == FIFTEEN)? 1 : 0;
+  assign BCD0 = (state == NO_MONEY) ? 4'b0000 :
+                (state == A_NICKEL) ? 4'b0101 :
+                (state == A_DIME)   ? 4'b0000 :
+                4'b0101;
+  assign BCD1 = (state == NO_MONEY) ? 4'b0000 :
+                (state == A_NICKEL) ? 4'b0000 :
+                (state == A_DIME)   ? 4'b0001 :
+                4'b0001;
 
 endmodule
