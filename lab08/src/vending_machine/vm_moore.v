@@ -23,6 +23,7 @@ module vm_moore(
     input D,
     input RESET,
     input CLK,
+    output [3:0] State, // for the ease of BCD conversion
     output O
     );
 
@@ -32,6 +33,8 @@ module vm_moore(
                   A_DIME    = 4'b0100, // 10$
                   FIFTEEN   = 4'b1000; // 15$
   reg [3:0] state = NO_MONEY;
+
+  wire State = state;
 
   always @(posedge CLK or posedge RESET) begin
     case (state)
