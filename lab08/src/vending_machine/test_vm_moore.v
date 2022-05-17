@@ -42,18 +42,34 @@ module test_vm_moore();
     .O(O)
   );
 
+  always #10 CLK = ~CLK;
+
+  reg [3:0] i;
+
   initial begin
     // Initialize Inputs
     N = 0;
     D = 0;
-    RESET = 0;
+    RESET = 1;
     CLK = 0;
 
     // Wait 100 ns for global reset to finish
-    #100;
+    #125;
 
-    // Add stimulus here
+    for (i = 0; i < 4'b1100; i = i+1) begin
+      RESET = 1;
+      #20;
+      RESET = 0;
+      N = i[2];
+      D = i[3];
+      #20;
+      N = i[0];
+      D = i[1];
+      #20;
+    end
 
+  RESET = 1;
+  #20;
   end
 
 endmodule

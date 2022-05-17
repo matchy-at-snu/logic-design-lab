@@ -60,7 +60,7 @@ module vm_moore(
       A_DIME: begin
         if (RESET) begin
           state <= NO_MONEY;
-        end else if (N or D) begin
+        end else if (N || D) begin
           state <= FIFTEEN;
         end else begin
           state <= A_DIME;
@@ -76,6 +76,6 @@ module vm_moore(
     endcase
   end
 
-  assign O = (state == FIFTEEN);
+  assign O = (state == FIFTEEN)? 1 : 0;
 
 endmodule
