@@ -62,7 +62,7 @@ This screenshot shows that the counter can restart from `00` when it reaches `99
 
 This screenshot shows that the counter can be reset *asynchronously* when the input `reset` is HIGH.
 
-![reset](img/lab07/20220510171404.png)
+![reset](img/lab07/20220510175144.png)
 
 ## TDC module
 
@@ -70,7 +70,67 @@ The schematic of the TDC module is shown below.
 
 ![TDC](img/lab07/20220510172105.png)
 
-### TDC_main
+### Code
+
+The code for Counter is the same as the implementation shown in above in [Lab Session: Counter Module](#lab-session-counter-module).
+
+#### Frequency divider
+
+```verilog
+module freq_divider(
+    input clr,
+    input clk,
+    output reg clkout
+    );
+
+  reg[31:0] cnt;
+
+  always @(posedge clk) begin
+    if (clr) begin
+        cnt <= 32'd0;
+        clkout <= 1'b0;
+    end
+    else if (cnt == 32'd25000000) begin
+        cnt <= 32'd0;
+        clkout <= ~clkout;
+    end
+    else begin
+        cnt <= cnt + 1;
+    end
+  end
+
+endmodule
+```
+
+#### BCD to 7-segment decoder
+
+```verilog
+module bcd_to_7(
+    input [3:0] bcd,
+    output reg [6:0] seg
+    );
+
+  always @(bcd) begin
+    case(bcd)
+      4'd0: seg <= 7'b0111111;
+      4'd1: seg <= 7'b0000110;
+      4'd2: seg <= 7'b1011011;
+      4'd3: seg <= 7'b1001111;
+      4'd4: seg <= 7'b1100110;
+      4'd5: seg <= 7'b1101101;
+      4'd6: seg <= 7'b1111101;
+      4'd7: seg <= 7'b0000111;
+      4'd8: seg <= 7'b1111111;
+      4'd9: seg <= 7'b1101111;
+    endcase
+  end
+
+endmodule
+```
+
+#### TDC_main
+
+Note that to allow the clock to be stopped and the counter the be reset, `TDC_main` accepts 3 inputs: `clock`, `stop` and `reset`. The input `clock` is wire to a 50MHz oscillator and is passed to the frequency divider to make a 1Hz clock. The input `stop` will set the internal clock (here `clock_sec`) to `0` and pause the counter when it's HIGH. The input `reset` will reset the counter when it's HIGH (but it will not stop the internal clock).
 
 ```verilog
 module TDC_main(
@@ -104,6 +164,32 @@ module TDC_main(
     .bcd(dig0), .seg(digit0)
   );
 
-
 endmodule
 ```
+
+### Implementation
+
+With the presence of the frequency divider, it is very difficult to simulate the waveform.
+
+#### Normal Increment
+
+![](img/lab07/20220510174101.png)
+![](img/lab07/20220510174140.png)
+![](img/lab07/20220510174152.png)
+![](img/lab07/20220510174209.png)
+
+#### Start Over
+
+![](img/lab07/20220510174233.png)
+![](img/lab07/20220510174246.png)
+
+#### Reset
+
+![](img/lab07/20220510174302.png)
+![](img/lab07/20220510174311.png)
+
+## Discussion
+
+In the discussion, I'm going to mention some mistakes I made during the implementation process.
+
+### Mistakes Made
